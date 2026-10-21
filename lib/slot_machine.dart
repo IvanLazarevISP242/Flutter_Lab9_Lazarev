@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:slot_machine_lazarev/slot_row.dart';
 
 class SlotMachine extends StatefulWidget {
   const SlotMachine({super.key});
@@ -13,6 +14,12 @@ class _SlotMachineState
     extends State<SlotMachine> {
   @override
   void _spin() {
+    if (_coins <= 0) {
+      setState(() {
+        _message = 'Монеты закончились!';
+      });
+      return;
+    }
     setState(() {
       _slot1 =
           _symbols[_random.nextInt(
@@ -37,6 +44,16 @@ class _SlotMachineState
     });
   }
 
+  void _reset() {
+    setState(() {
+      _coins = 10;
+      _slot1 = 'assets/images/cherry.png';
+      _slot2 = 'assets/images/lemon.png';
+      _slot3 = 'assets/images/seven.png';
+      _message = '';
+    });
+  }
+
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -50,28 +67,10 @@ class _SlotMachineState
           ),
         ),
         SizedBox(height: 40),
-        Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              _slot1,
-              width: 100,
-              height: 100,
-            ),
-            SizedBox(width: 16),
-            Image.asset(
-              _slot2,
-              width: 100,
-              height: 100,
-            ),
-            SizedBox(width: 16),
-            Image.asset(
-              _slot3,
-              width: 100,
-              height: 100,
-            ),
-          ],
+        SlotRow(
+          slot1: _slot1,
+          slot2: _slot2,
+          slot3: _slot3,
         ),
         SizedBox(height: 24),
         Text(
@@ -83,7 +82,7 @@ class _SlotMachineState
         ),
         SizedBox(height: 40),
         ElevatedButton(
-          onPressed: _spin,
+          onPressed: _coins > 0 ? _spin : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.amber,
             padding: EdgeInsets.symmetric(
@@ -97,6 +96,17 @@ class _SlotMachineState
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black,
+            ),
+          ),
+        ),
+        SizedBox(height: 12),
+        TextButton(
+          onPressed: _reset,
+          child: Text(
+            'начать заново',
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
             ),
           ),
         ),

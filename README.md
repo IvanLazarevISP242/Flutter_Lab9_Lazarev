@@ -1,17 +1,18 @@
-# slot_machine_lazarev
+# Лабораторная работа №9. Flutter: StatefulWidget и управление состоянием
+## Выполнил:
+Лазарев Иван ИСП-242 
+## дата сдачи 
+22.10.2026
+***
+изучил разницу между StatelessWidget и StatefulWidget, научился
+управлять состоянием приложения через setState(), подключать локальные
+изображения и обрабатывать нажатия кнопок — на примере слот-машины.
+***
+## Запуск
+1. `git clone <url>`
+2. `cd Flutter_Lab09_Lazarev`
+3. `flutter pub get`
+4. `flutter run -d chrome`
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Скриншот
+![screenshot](img/s.png)
